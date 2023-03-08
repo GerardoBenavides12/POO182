@@ -22,10 +22,7 @@ entry2 = ttk.Entry(seccion1)
 entry2.config (show="*")
 entry2.place(x="240",y="200")
 
-botonLogin = Button(seccion1,text="login",fg="black",width="15",command=validacioncontraseña)
+botonLogin = Button(seccion1, text="login", fg="black", width="15", command=)
 botonLogin.place(x="250",y="250")
-botonLogin.pack()
 
-    
-    
 ventana.mainloop()
