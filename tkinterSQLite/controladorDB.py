@@ -77,3 +77,11 @@ class controladorDB:
                 
             except sqlite3.OperationalError:
                 print("Error de consulta")
+    
+    def mostrarDatos(self):
+        cursor = self.conexionBD.cursor()
+        bd= "select * from tbregistrados"
+        cursor.execute(bd)
+        datos = cursor.fetchall()
+        return datos
+        

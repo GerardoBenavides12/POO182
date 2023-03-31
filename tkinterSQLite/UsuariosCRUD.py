@@ -13,11 +13,17 @@ def ejecutaInsert():
 #Funcion que usa el objeto controlador para buscar un usuario
 def ejecutarSelectU():
     rsUsu = controlador.consultarUsuario(VarBus.get())
-    
     #Iteramos el contenido de la consulta y lo guardamos en cadena
     for usu in rsUsu:
         cadena = str(usu[0])+" "+usu[1]+" "+usu[2]+" "+str(usu[3])
-    print(cadena)
+        
+    if(rsUsu):
+        textBus.config(state = 'normal')
+        textBus.delete(1.0, 'end')
+        textBus.insert('end', cadena)
+        textBus.config(state = 'disabled')
+    else:
+        messagebox.showerror("Error!","El usuario no existe")
     
 ventana = Tk()
 ventana.title("CRUD de usuarios")
@@ -59,6 +65,11 @@ btnBus = Button(pestana2, text="Buscar", command=ejecutarSelectU).pack()
 
 subBus = Label(pestana2, text="Registrado:", fg="blue", font=("Modern",15)).pack()
 textBus = tk.Text(pestana2, height=5, width=52).pack()
+
+# Pestaña3: Mostrar datos
+
+titulo3 = Label(pestana3, text="Consultar Usuarios", fg="orange", font=("Modern",18)).pack()
+btnconsulta = Button(pestana3, text="Mostrar datos").pack()
 
 
 panel.add(pestana1,text="Formulario Usuarios")
